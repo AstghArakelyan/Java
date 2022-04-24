@@ -35,7 +35,7 @@ public class CustomArrayList<E> {
 
     public void removeByElement(E element) {
         int index = indexOf(element);
-        if(index > 0) {
+        if(index >= 0) {
             removeByIndex(index);
         } else {
             System.out.println("The ArrayList doesn't contain this element");
@@ -44,9 +44,8 @@ public class CustomArrayList<E> {
 
     public void removeByIndex(int index) {
         if(index >= 0 && index < size) {
-            for(int i = index; i < size - 1; i++) {
-                objects[i] = objects[i + 1];
-            }
+            if (size - 1 - index >= 0)
+                System.arraycopy(objects, index + 1, objects, index, size - 1 - index);
             size--;
         } else {
             throw new IndexOutOfBoundsException();
