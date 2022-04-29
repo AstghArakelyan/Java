@@ -1,6 +1,7 @@
 package com.tasks.multythreading;
 
 import java.util.Queue;
+
 public class ConsumerThread implements Runnable {
     private final Queue<Integer> list;
 
@@ -12,7 +13,7 @@ public class ConsumerThread implements Runnable {
     public void run() {
         synchronized (list) {
             while (true) {
-                if(!list.isEmpty()) {
+                if (!list.isEmpty()) {
                     Integer removedValue = list.remove();
                     list.notifyAll();
                     System.out.println("Consumer get value " + removedValue + ". Size " + list.size());

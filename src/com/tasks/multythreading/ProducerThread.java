@@ -13,7 +13,7 @@ public class ProducerThread implements Runnable {
     public void run() {
         synchronized (list) {
             while (true) {
-                if(list.size() < 10) {
+                if (list.size() < 10) {
                     int randomValue = RandomUtil.getRandomValue();
                     list.add(randomValue);
                     System.out.println("Producer adds value " + randomValue + ". Size " + list.size());
